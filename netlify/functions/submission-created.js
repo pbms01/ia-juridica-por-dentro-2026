@@ -75,6 +75,8 @@ Entre no Grupo Premium de pré-inscritos e comece sua jornada com acesso às ric
 
 https://chat.whatsapp.com/JhqdiVzZKgb8I3eEfOLjhf
 
+Sobre as suas aulas gratuitas e material de Nivelamentos: ao entrar no grupo basta dizer "Quero minhas aulas 0 e material de nivelamentos".
+
 Até breve,
 Pedro Borges Mourão
 IA Jurídica por Dentro`;
@@ -101,6 +103,11 @@ IA Jurídica por Dentro`;
 
 <p>Se o botão não funcionar, copie e cole este link:<br>
 <a href="https://chat.whatsapp.com/JhqdiVzZKgb8I3eEfOLjhf" style="color:#ff5c1a;word-break:break-all">https://chat.whatsapp.com/JhqdiVzZKgb8I3eEfOLjhf</a></p>
+
+<div style="background:#fff5ef;border-left:3px solid #ff5c1a;padding:14px 18px;border-radius:4px;margin:24px 0">
+<p style="margin:0 0 6px;font-weight:600;color:#1a1a1a">Sobre as suas aulas gratuitas e material de Nivelamentos</p>
+<p style="margin:0;color:#1a1a1a">Ao entrar no grupo, basta dizer: <strong>&quot;Quero minhas aulas 0 e material de nivelamentos&quot;</strong>.</p>
+</div>
 
 <p style="margin-top:32px">Até breve,<br>
 <strong>Pedro Borges Mourão</strong><br>

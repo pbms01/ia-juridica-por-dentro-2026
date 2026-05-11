@@ -1,6 +1,6 @@
 {
   "name": "ia-juridica-por-dentro-2026",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Landpage IA Jurídica por Dentro com Netlify Function para envio de email via API Resend",
   "private": true
 }

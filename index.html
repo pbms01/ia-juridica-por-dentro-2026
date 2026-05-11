@@ -157,7 +157,9 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* PRICING PREVIEW */
-.pricing-preview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;opacity:.72}
+.pricing-preview{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:32px;opacity:.72}
+.price-card.free{border-color:rgba(34,197,94,.3)}
+.price-card.free::after{content:'GRÁTIS';color:#22c55e;background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.3)}
 .price-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative}
 .price-card.featured{border-color:rgba(255,92,26,.3)}
 .price-card::after{content:'EM BREVE';position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px}
@@ -252,7 +254,9 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
   <span class="banner-dot"></span>
   <strong>Curso aberto</strong>
   · Aulas publicadas · novas aulas todas as semanas
-  <a href="https://go.hotmart.com/H105651480S?dp=1" target="_blank" rel="noopener noreferrer" style="margin-left:14px;padding:5px 14px;background:#ff5c1a;color:#fff;border-radius:5px;font-weight:700;text-decoration:none;font-size:.78rem;letter-spacing:.02em;">Inscreva-se →</a>
+  <a href="https://go.hotmart.com/H105651480S?dp=1" target="_blank" rel="noopener noreferrer" style="margin-left:14px;padding:5px 14px;background:#ff5c1a;color:#fff;border-radius:5px;font-weight:700;text-decoration:none;font-size:.78rem;letter-spacing:.02em;">Inscrever-se no curso →</a>
+  <span style="margin:0 8px;color:rgba(255,255,255,.45);font-size:.74rem;">ou</span>
+  <a href="#inscricao" style="padding:5px 12px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:5px;font-weight:600;text-decoration:none;font-size:.74rem;letter-spacing:.02em;">experiência pré-inscritos (grátis) →</a>
 </div>
 
 <!-- NAV -->
@@ -408,10 +412,22 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
 <section>
   <div class="wrap">
     <div class="section-label">Planos do curso</div>
-    <h2>Inscreva-se agora na Hotmart.</h2>
-    <p>O curso está aberto, com aulas já publicadas e novas aulas todas as semanas. Quem se inscreve no plano mensal entra imediatamente no Vantagens para quem se inscrever no curso com Pedro.</p>
+    <h2>Inscreva-se no curso ou comece pela experiência pré-inscritos.</h2>
+    <p>Duas portas de entrada. A <strong>experiência pré-inscritos</strong> é gratuita e funciona como antessala: vocabulário, nivelamento, aulas 0 e o Grupo Premium no WhatsApp. A <strong>inscrição direta no curso</strong> dá acesso imediato às aulas já publicadas, novas aulas todas as semanas e ao Grupo Membros.</p>
 
     <div class="pricing-preview">
+      <div class="price-card free">
+        <div class="price-name">// EXPERIÊNCIA PRÉ-INSCRITOS</div>
+        <div class="price-val"><sup>R$</sup>0</div>
+        <div class="price-period">antessala ao curso · sem compromisso</div>
+        <ul class="price-features">
+          <li><span class="ck">✓</span> Grupo Premium de pré-inscritos no WhatsApp</li>
+          <li><span class="ck">✓</span> Aulas 0 e material de Nivelamentos (basta pedir no grupo)</li>
+          <li><span class="ck">✓</span> 2 aulas fundacionais de configuração do Claude</li>
+          <li><span class="ck">✓</span> Vocabulário e dicas técnicas de IA jurídica</li>
+        </ul>
+        <a href="#inscricao" class="price-cta" style="display:block;text-align:center;margin-top:18px;padding:13px 22px;background:transparent;color:var(--accent);border:1px solid var(--accent);font-family:var(--sans);font-weight:700;border-radius:7px;text-decoration:none;letter-spacing:.01em;">Fazer pré-inscrição grátis →</a>
+      </div>
       <div class="price-card featured">
         <div class="price-name">// PLANO MENSAL</div>
         <div class="price-val"><sup>R$</sup>197</div>
