@@ -1,28 +1,39 @@
 // netlify/functions/submission-created.js
 //
-// Dispara automaticamente quando o Netlify recebe uma submissão do form
-// "pre-inscricao". Envia dois emails via SMTP da Hostinger:
-//   1) Para o pré-inscrito: texto de boas-vindas + link do grupo no WhatsApp
-//   2) Para pbmsto00@gmail.com: resumo administrativo da pré-inscrição
+// Dispara quando o Netlify recebe uma submissão do form "pre-inscricao".
+// Envia DOIS emails via API HTTP da Resend (https://resend.com/docs):
+//   1) Boas-vindas para o pré-inscrito (com link do grupo WhatsApp)
+//   2) Notificação administrativa para Pedro
 //
-// Variáveis de ambiente obrigatórias no painel do Netlify:
-//   SMTP_HOST    smtp.hostinger.com  (ou smtp.titan.email se a conta for Titan)
-//   SMTP_PORT    465  (SSL) ou 587 (STARTTLS) - pegar no hPanel da Hostinger
-//   SMTP_USER    ia-juridica-por-dentro@mlconvergenciadigital.com.br
-//   SMTP_PASS    senha do email (a mesma usada para login no webmail)
-//   NOTIFY_TO    pbmsto00@gmail.com  (email pessoal que recebe notificações)
+// Variáveis de ambiente:
+//   RESEND_API_KEY  OBRIGATÓRIA — chave da API Resend (formato re_...)
+//   SENDER_EMAIL    opcional — remetente. Default:
+//                   ia-juridica-por-dentro@mlconvergenciadigital.com.br
+//   NOTIFY_TO       opcional — destinatário do admin email. Default:
+//                   pbmsto00@gmail.com
 //
-// O nome do arquivo (submission-created.js) é convenção do Netlify para
-// hook de form submission, não renomear.
+// ATENÇÃO: o domínio do SENDER_EMAIL precisa estar VERIFICADO na Resend
+// (https://resend.com/domains). Sem verificação, a API retorna erro
+// "The domain is not verified". Enquanto não verifica, é possível usar
+// SENDER_EMAIL=onboarding@resend.dev (sandbox da Resend) — funciona, mas
+// o remetente aparece como onboarding@resend.dev no inbox do destinatário.
+//
+// O nome do arquivo (submission-created.js) é convenção do Netlify para o
+// hook de form submission — não renomear.
 
-const nodemailer = require('nodemailer');
-
-const SENDER_EMAIL = 'ia-juridica-por-dentro@mlconvergenciadigital.com.br';
+const RESEND_ENDPOINT = 'https://api.resend.com/emails';
+const SENDER_EMAIL = process.env.SENDER_EMAIL || 'ia-juridica-por-dentro@mlconvergenciadigital.com.br';
 const SENDER_NAME = 'IA Jurídica por Dentro';
+const NOTIFY_TO = process.env.NOTIFY_TO || 'pbmsto00@gmail.com';
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method not allowed' };
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY ausente no ambiente da function');
+    return { statusCode: 500, body: 'Missing RESEND_API_KEY' };
   }
 
   let payload;
@@ -50,20 +61,6 @@ exports.handler = async (event) => {
     console.error('Submissão sem email:', payload);
     return { statusCode: 400, body: 'Missing email' };
   }
-
-  // Configurar transporter SMTP
-  // A porta 465 usa SSL direto (secure: true).
-  // A porta 587 usa STARTTLS (secure: false, mas STARTTLS é negociado).
-  const port = parseInt(process.env.SMTP_PORT || '465', 10);
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: port,
-    secure: port === 465,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
 
   // ============================================================
   // EMAIL 1 — boas-vindas para o pré-inscrito
@@ -119,9 +116,8 @@ IA Jurídica por Dentro`;
 </html>`;
 
   // ============================================================
-  // EMAIL 2 — notificação administrativa para Pedro
+  // EMAIL 2 — notificação administrativa
   // ============================================================
-  const notifyEmail = process.env.NOTIFY_TO || 'pbmsto00@gmail.com';
   const adminText = `Nova pré-inscrição no Grupo Premium · IA Jurídica por Dentro
 
 Nome: ${nome}
@@ -165,22 +161,22 @@ Email enviado automaticamente pelo formulário da landpage.`;
 </html>`;
 
   // ============================================================
-  // DISPARO DOS DOIS EMAILS
-  // Promise.allSettled garante que mesmo se um falhar, o outro tenta sair
+  // DISPARO DOS DOIS EMAILS VIA API DA RESEND
+  // Promise.allSettled garante que se um falhar o outro tenta sair
   // ============================================================
   const results = await Promise.allSettled([
-    transporter.sendMail({
-      from: `"${SENDER_NAME}" <${SENDER_EMAIL}>`,
-      to: { name: nome, address: email },
-      replyTo: SENDER_EMAIL,
+    sendResendEmail({
+      from: `${SENDER_NAME} <${SENDER_EMAIL}>`,
+      to: [email],
+      reply_to: SENDER_EMAIL,
       subject: 'Bem-vindo ao Grupo Premium de pré-inscritos · IA Jurídica por Dentro',
       text: welcomeText,
       html: welcomeHtml,
     }),
-    transporter.sendMail({
-      from: `"${SENDER_NAME} (sistema)" <${SENDER_EMAIL}>`,
-      to: notifyEmail,
-      replyTo: email,
+    sendResendEmail({
+      from: `${SENDER_NAME} (sistema) <${SENDER_EMAIL}>`,
+      to: [NOTIFY_TO],
+      reply_to: email,
       subject: `Nova pré-inscrição: ${nome} (${perfil})`,
       text: adminText,
       html: adminHtml,
@@ -193,16 +189,16 @@ Email enviado automaticamente pelo formulário da landpage.`;
   if (welcomeResult.status === 'rejected') {
     console.error('Falha no email de boas-vindas:', welcomeResult.reason);
   } else {
-    console.log(`Boas-vindas enviado: messageId=${welcomeResult.value.messageId}`);
+    console.log(`Boas-vindas enviado: id=${welcomeResult.value.id}`);
   }
 
   if (adminResult.status === 'rejected') {
     console.error('Falha no email de notificação:', adminResult.reason);
   } else {
-    console.log(`Notificação interna enviada: messageId=${adminResult.value.messageId}`);
+    console.log(`Notificação interna enviada: id=${adminResult.value.id}`);
   }
 
-  // Status final: se pelo menos um saiu, considera sucesso parcial
+  // Sucesso parcial: se pelo menos um saiu, retorna 200
   const anyOk = welcomeResult.status === 'fulfilled' || adminResult.status === 'fulfilled';
   return {
     statusCode: anyOk ? 200 : 500,
@@ -213,6 +209,28 @@ Email enviado automaticamente pelo formulário da landpage.`;
     }),
   };
 };
+
+// Helper: faz POST para a API da Resend e devolve o JSON parseado.
+// Lança erro com a mensagem da própria Resend se response não for 2xx —
+// isso garante que a causa real apareça no log da function.
+async function sendResendEmail(body) {
+  const response = await fetch(RESEND_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    const errMsg = data.message || data.error || `HTTP ${response.status}`;
+    throw new Error(`Resend API ${response.status}: ${errMsg}`);
+  }
+  return data;
+}
 
 // Escapa HTML para evitar injeção via campos do formulário
 function escapeHtml(s) {
