@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Jurídica por Dentro — Pedro Borges Mourão · Curso 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════
+     META PIXEL — BASE CODE
+     Como obter seu Pixel ID:
+     business.facebook.com → Fontes de Dados → Pixels → clique no pixel → copie o ID numérico
+     Pixel ID: 4596483327248603
+     ═══════════════════════════════════════════════════════ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','4596483327248603');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=4596483327248603&ev=PageView&noscript=1"/></noscript>
+<!-- FIM META PIXEL -->
+<style>
+:root{
+  --bg:#0b0e14;--bg2:#111520;--bg3:#161b27;--border:#1e2535;
+  --accent:#ff5c1a;--accent2:#ff8c5a;--green:#00e5a0;--blue:#7090ff;
+  --text:#e8eaf0;--muted:#6b7592;
+  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;--body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+.wrap{max-width:780px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{padding:80px 0;position:relative;z-index:1}
+section+section{border-top:1px solid var(--border)}
+
+h1,h2,h3{font-family:var(--sans);font-weight:800;line-height:1.1}
+h1{font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-.03em}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:-.02em;margin-bottom:16px}
+h3{font-size:1rem;letter-spacing:-.01em}
+p{color:#a0a8c0}
+strong{color:var(--text)}
+em{font-style:normal;color:var(--accent)}
+
+.section-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* BANNER */
+.banner{background:linear-gradient(90deg,#0a1800,#162800,#0a1800);border-bottom:1px solid #2a4a10;padding:10px 24px;text-align:center;font-family:var(--mono);font-size:.76rem;color:#7ec840;letter-spacing:.04em;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.banner-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.cd-wrap{display:inline-flex;gap:5px;align-items:center}
+.cd-unit{background:rgba(0,229,160,.15);border:1px solid rgba(0,229,160,.3);border-radius:4px;padding:1px 7px;color:#fff;font-weight:700}
+
+/* NAV */
+nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;max-width:780px;margin:0 auto;position:relative;z-index:1}
+.nav-brand{font-family:var(--mono);font-size:.83rem;color:var(--muted)}
+.nav-brand strong{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:.82rem;border:none;border-radius:6px;padding:10px 18px;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:.01em}
+.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:72px 0 56px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--green);background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:4px;padding:6px 14px;margin-bottom:28px;letter-spacing:.06em}
+.hero-eyebrow::before{content:'◉';font-size:.65rem}
+.hero-sub{font-size:1.1rem;color:#8090b0;max-width:580px;margin-bottom:12px;line-height:1.65}
+.hero-launch{font-family:var(--mono);font-size:.82rem;color:var(--green);margin-bottom:32px;display:flex;align-items:center;gap:8px}
+.hero-launch::before{content:'→';color:var(--accent)}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.pill{font-family:var(--mono);font-size:.7rem;padding:5px 12px;border-radius:4px;border:1px solid var(--border);color:var(--muted)}
+.pill.g{border-color:rgba(0,229,160,.25);color:var(--green);background:rgba(0,229,160,.06)}
+.pill.o{border-color:rgba(255,92,26,.25);color:var(--accent);background:rgba(255,92,26,.06)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(255,92,26,.22);letter-spacing:.01em}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,92,26,.32)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-family:var(--sans);font-weight:600;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.stat-item{background:var(--bg2);padding:18px 14px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:1.3rem;font-weight:700;color:var(--accent);display:block;letter-spacing:-.02em}
+.stat-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+/* NOW CARD */
+.now-card{background:linear-gradient(135deg,#0d1a0d,#0b1410);border:1px solid rgba(0,229,160,.2);border-radius:16px;padding:32px;position:relative;overflow:hidden}
+.now-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(0,229,160,.04),transparent 60%);pointer-events:none}
+.now-title{font-family:var(--sans);font-weight:800;font-size:1.35rem;margin-bottom:10px}
+.now-sub{font-size:.9rem;color:#8090b0;margin-bottom:24px;line-height:1.6}
+.now-items{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.now-item{background:rgba(0,0,0,.3);border:1px solid rgba(0,229,160,.1);border-radius:10px;padding:16px}
+.now-item-icon{font-size:1.2rem;margin-bottom:8px}
+.now-item-title{font-family:var(--sans);font-weight:700;font-size:.88rem;margin-bottom:4px}
+.now-item-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+.now-cta-wrap{margin-top:24px}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:32px;position:relative}
+.timeline::before{content:'';position:absolute;left:20px;top:24px;bottom:24px;width:1px;background:linear-gradient(180deg,var(--green),var(--accent),var(--blue));opacity:.3}
+.tl-item{display:flex;gap:20px;align-items:flex-start;padding:16px 0}
+.tl-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;flex-shrink:0;font-weight:700;position:relative;z-index:1}
+.tl-dot.now{background:rgba(0,229,160,.15);border:2px solid var(--green);color:var(--green)}
+.tl-dot.mid{background:rgba(255,92,26,.1);border:2px solid rgba(255,92,26,.4);color:var(--accent)}
+.tl-dot.end{background:rgba(112,144,255,.1);border:2px solid rgba(112,144,255,.4);color:var(--blue)}
+.tl-content{padding-top:8px;flex:1}
+.tl-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;margin-bottom:6px}
+.tl-tag.now{color:var(--green)}.tl-tag.mid{color:var(--accent)}.tl-tag.end{color:var(--blue)}
+.tl-title{font-family:var(--sans);font-weight:700;font-size:1rem;margin-bottom:4px}
+.tl-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* PATHS */
+.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.path-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:26px;position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.path-card.a::before{background:linear-gradient(90deg,var(--accent),transparent)}
+.path-card.b::before{background:linear-gradient(90deg,var(--green),transparent)}
+.path-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding:4px 10px;border-radius:4px;margin-bottom:14px;display:inline-block}
+.path-card.a .path-tag{background:rgba(255,92,26,.1);color:var(--accent);border:1px solid rgba(255,92,26,.2)}
+.path-card.b .path-tag{background:rgba(0,229,160,.08);color:var(--green);border:1px solid rgba(0,229,160,.18)}
+.path-card h3{margin-bottom:8px;font-size:.92rem}
+.path-card p{font-size:.83rem;margin-bottom:14px}
+.path-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.path-list li{font-size:.79rem;color:#8090b0;display:flex;gap:8px;align-items:flex-start}
+.path-list li::before{content:'→';flex-shrink:0;font-family:var(--mono)}
+.path-card.a .path-list li::before{color:var(--accent)}
+.path-card.b .path-list li::before{color:var(--green)}
+.prereq{margin-top:14px;font-family:var(--mono);font-size:.66rem;color:var(--muted)}
+.coming-badge{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+
+/* TERMINAL */
+.terminal-wrap{background:#080b10;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:36px 0;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.terminal-bar{background:var(--bg3);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot.r{background:#ff5f57}.dot.y{background:#ffbd2e}.dot.g{background:#28ca41}
+.terminal-title{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin:0 auto}
+.terminal-body{padding:24px;font-family:var(--mono);font-size:.8rem;line-height:2;min-height:180px}
+.terminal-line{display:flex;gap:12px}
+.t-prompt{color:var(--green);flex-shrink:0}
+.t-cmd{color:var(--blue)}
+.t-out{color:#6b7592;padding-left:24px}
+.t-warn{color:var(--accent);font-weight:700}
+.t-info{color:var(--green)}
+.t-cursor{display:inline-block;width:8px;height:14px;background:var(--green);animation:blink 1s step-end infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* PRICING PREVIEW */
+.pricing-preview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;opacity:.72}
+.price-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative}
+.price-card.featured{border-color:rgba(255,92,26,.3)}
+.price-card::after{content:'EM BREVE';position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px}
+.price-name{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;margin-bottom:14px}
+.price-val{font-family:var(--sans);font-weight:800;font-size:2.4rem;color:var(--text);line-height:1;margin-bottom:4px}
+.price-val sup{font-size:1rem;vertical-align:super;color:var(--muted)}
+.price-period{font-size:.8rem;color:var(--muted);margin-bottom:20px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px}
+.price-features li{font-size:.82rem;color:#8090b0;display:flex;gap:8px;align-items:flex-start}
+.price-features li .ck{color:var(--green);flex-shrink:0;font-family:var(--mono)}
+.price-note{font-family:var(--mono);font-size:.66rem;color:var(--muted);text-align:center;margin-top:14px}
+
+/* FOR WHO */
+.for-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.for-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px}
+.for-card h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;margin-bottom:14px}
+.for-card.yes h4{color:var(--green)}.for-card.no h4{color:var(--muted)}
+.for-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.for-list li{font-size:.82rem;color:#8090b0;display:flex;gap:9px;align-items:flex-start}
+.for-list li .ico{flex-shrink:0;font-family:var(--mono)}
+.for-card.yes .ico{color:var(--green)}.for-card.no .ico{color:#ff4040}
+
+/* PROOF */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:28px}
+.proof-item{text-align:center}
+.proof-num{font-family:var(--mono);font-size:1.8rem;font-weight:700;color:var(--accent);display:block}
+.proof-label{font-size:.72rem;color:var(--muted);margin-top:4px}
+blockquote{border-left:2px solid var(--accent);padding:14px 20px;margin:28px 0;background:var(--bg2);border-radius:0 8px 8px 0;font-style:italic;color:#8090b0;font-size:.92rem}
+blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:.72rem;color:var(--muted);font-family:var(--mono)}
+
+/* FORM */
+.form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:560px;margin:0 auto;position:relative}
+.form-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:16px 16px 0 0}
+.form-eyebrow{font-family:var(--mono);font-size:.68rem;color:var(--accent);background:rgba(255,92,26,.07);border:1px solid rgba(255,92,26,.2);border-radius:4px;padding:6px 14px;margin-bottom:20px;width:fit-content;letter-spacing:.06em}
+.form-title{font-family:var(--sans);font-weight:800;font-size:1.25rem;margin-bottom:8px;line-height:1.2}
+.form-sub{font-size:.86rem;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.72rem;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:var(--body);font-size:.88rem;outline:none;transition:border-color .2s;appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:72px}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7592' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.honeypot{display:none!important;visibility:hidden!important;position:absolute!important;left:-9999px!important}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:4px}
+.consent input[type="checkbox"]{margin-top:3px;accent-color:var(--accent);flex-shrink:0}
+.consent label{font-size:.78rem;color:var(--muted);cursor:pointer;line-height:1.5}
+.form-submit{width:100%;padding:16px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:1rem;border:none;border-radius:8px;cursor:pointer;margin-top:20px;transition:all .2s;box-shadow:0 4px 20px rgba(255,92,26,.2);letter-spacing:.01em}
+.form-submit:hover{background:var(--accent2);transform:translateY(-1px)}
+.form-submit:disabled{opacity:.6;cursor:default}
+.form-privacy{font-size:.68rem;color:var(--muted);text-align:center;margin-top:14px;font-family:var(--mono);line-height:1.6}
+#form-success{display:none;text-align:center;padding:32px 0}
+#form-success h3{color:var(--green);margin-bottom:12px;font-family:var(--sans);font-size:1.15rem}
+#form-success p{color:var(--muted);font-size:.88rem;line-height:1.7}
+#form-error{display:none;color:#ff5050;font-size:.76rem;margin-top:8px;text-align:center;font-family:var(--mono)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:7px;margin-top:28px}
+.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.faq-q{padding:16px 20px;font-family:var(--sans);font-weight:700;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';color:var(--accent);font-family:var(--mono);font-size:1.2rem;flex-shrink:0}
+details[open] .faq-q::after{content:'−'}
+.faq-a{padding:0 20px 16px;font-size:.84rem;color:#8090b0;line-height:1.7;border-top:1px solid var(--border)}
+
+/* MINI COUNTDOWN inside FAQ */
+.faq-cd{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.75rem;background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:6px;padding:6px 14px;margin:10px 0;color:var(--green)}
+.faq-cd-unit{background:rgba(0,229,160,.15);border:1px solid rgba(0,229,160,.25);border-radius:3px;padding:1px 7px;color:#fff;font-weight:700}
+
+/* STICKY */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(11,14,20,.96);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 20px;z-index:99;gap:12px;align-items:center;justify-content:space-between}
+.sticky-text{font-size:.78rem;color:var(--muted)}
+.sticky-text strong{color:var(--text);display:block;font-family:var(--sans)}
+.sticky-btn{background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:.82rem;padding:11px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+
+footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);font-family:var(--mono);font-size:.7rem;color:var(--muted);position:relative;z-index:1}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+
+@media(max-width:680px){
+  .stats-bar,.paths-grid,.for-grid,.proof-grid,.pricing-preview,.now-items{grid-template-columns:1fr}
+  .form-wrap{padding:24px 18px}
+  .sticky-cta{display:flex}
+  body{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  <span class="banner-dot"></span>
+  <strong>Curso aberto</strong>
+  · Aulas publicadas · novas aulas todas as semanas
+  <a href="https://hotm.io/G7oKl41" target="_blank" rel="noopener noreferrer" style="margin-left:14px;padding:5px 14px;background:#ff5c1a;color:#fff;border-radius:5px;font-weight:700;text-decoration:none;font-size:.78rem;letter-spacing:.02em;">Inscreva-se →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Pedro Borges Mourão · <strong>IA Jurídica por Dentro</strong></div>
+  <a href="#inscricao" class="nav-cta">Fazer minha pré-inscrição →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">Curso aberto · Inscrições rolando</div>
+    <h1 class="fade-up">IA Jurídica<br><em>por dentro.</em></h1>
+    <p class="hero-sub fade-up">O curso está aberto, com aulas já publicadas.<br><strong>Inscreva-se agora e tenha acesso imediato a tudo que já está disponível, com novas aulas todas as semanas.</strong></p>
+    <p class="hero-launch fade-up">Aulas já gravadas e disponíveis. Novas aulas toda semana.</p>
+
+    <div class="hero-pills fade-up">
+      <span class="pill g">◉ Grupo premium ativo</span>
+      <span class="pill g">Vocabulário de IA jurídica</span>
+      <span class="pill g">Fundamentos e dicas práticas</span>
+      <span class="pill g">Aulas já gravadas e disponíveis</span>
+      <span class="pill">Vantagens para quem se inscrever no curso</span>
+    </div>
+
+    <div class="hero-ctas fade-up">
+      <a href="#inscricao" class="btn-primary">Fazer minha pré-inscrição →</a>
+      <a href="#curso" class="btn-ghost">Ver o que vem aí ↓</a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num">41.9K</span>
+        <div class="stat-label">profissionais alcançados</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10,3%</span>
+        <div class="stat-label">taxa de engajamento</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">739</span>
+        <div class="stat-label">salvamentos em 2 semanas</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1.041</span>
+        <div class="stat-label">compartilhamentos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE ACONTECE NA INSCRIÇÃO -->
+<section id="grupo">
+  <div class="wrap">
+    <div class="section-label">O que você recebe ao se pré-inscrever</div>
+    <div class="now-card">
+      <h2 class="now-title">Grupo Premium para pré-inscritos. Comece o nivelamento agora.</h2>
+      <p class="now-sub">Quem se pré-inscreve entra imediatamente no Grupo Premium de pré-inscritos, onde Pedro mantém o conteúdo de nivelamento, vocabulário e dicas técnicas. As aulas do curso estão na Hotmart, gravadas e disponíveis. Quem se inscreve no curso ganha também acesso ao Grupo Membros, com canal direto para dúvidas individuais.</p>
+
+      <div class="now-items">
+        <div class="now-item">
+          <div class="now-item-icon">📖</div>
+          <div class="now-item-title">Vocabulário de IA jurídica</div>
+          <div class="now-item-desc">Tokenização, embeddings, RAG, map-reduce, alucinação — os termos técnicos que aparecem no curso, explicados em linguagem acessível antes das aulas começarem.</div>
+        </div>
+        <div class="now-item">
+          <div class="now-item-icon">⚖️</div>
+          <div class="now-item-title">Fundamentos sem código</div>
+          <div class="now-item-desc">Como LLMs leem texto jurídico. O que é um token para um modelo. Por que parte do argumento pode ser descartada antes de chegar ao magistrado.</div>
+        </div>
+        <div class="now-item">
+          <div class="now-item-icon">💡</div>
+          <div class="now-item-title">Dicas práticas imediatas</div>
+          <div class="now-item-desc">Orientações de uso seguro que os alunos podem aplicar já: o que funciona, o que não funciona, o que expõe a risco sem que você perceba.</div>
+        </div>
+        <div class="now-item">
+          <div class="now-item-icon">🎯</div>
+          <div class="now-item-title">Vantagens para quem se inscrever no curso</div>
+          <div class="now-item-desc">Quem está no Grupo Premium tem prioridade no acesso ao Grupo Membros após inscrição no curso, com canal direto para dúvidas individuais com Pedro.</div>
+        </div>
+      </div>
+
+      <div class="now-cta-wrap" style="margin-top:24px">
+        <a href="#inscricao" class="btn-primary">Fazer minha pré-inscrição →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<!-- TERMINAL -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Por que isso é urgente</div>
+    <h2>O sistema de justiça já processa seus argumentos por IA.</h2>
+
+    <div class="terminal-wrap">
+      <div class="terminal-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <div class="terminal-title" style="font-family:var(--mono);font-size:.7rem">tribunal.ia — pipeline_processamento</div>
+      </div>
+      <div class="terminal-body" id="terminal-output"></div>
+    </div>
+
+    <p>Esse não é um cenário futuro. Tribunais brasileiros já operam sistemas de IA em produção — lendo petições, classificando ações e entregando resumos aos magistrados <em style="font-style:italic;color:inherit">antes</em> de qualquer análise humana.</p>
+    <br>
+    <p>A maioria dos profissionais não sabe que isso existe. Os poucos que sabem não entendem o mecanismo por dentro: qual argumento sobrevive ao map-reduce, o que a tokenização descarta, como o roteamento semântico classifica uma ação — e o que isso significa para cada peça protocolizada.</p>
+    <br>
+    <p>Quem aprender como esses sistemas funcionam agora vai ganhar <strong>10 anos de vantagem</strong> sobre quem ficar esperando o mercado "consolidar".</p>
+  </div>
+</section>
+
+<!-- CURSO: PREVIEW -->
+<section id="curso">
+  <div class="wrap">
+    <div class="section-label">O que vem aí — as aulas</div>
+    <h2>Um curso. Dois caminhos.</h2>
+    <p>Cada aluno chega com uma bagagem diferente. O curso cobre as duas jornadas dentro da mesma trilha progressiva — de quem está começando a quem quer construir um sistema próprio.</p>
+
+    <div class="paths-grid">
+      <div class="path-card a">
+        <div class="coming-badge">disponível</div>
+        <div class="path-tag">// Trilha A — Entendimento</div>
+        <h3>Quero entender o que é possível e dar meus primeiros passos com segurança</h3>
+        <p>Para quem ainda não usa IA de forma sistemática ou usa sem confiança nos resultados.</p>
+        <ul class="path-list">
+          <li>Como a IA processa texto jurídico (e onde ela erra)</li>
+          <li>Engenharia de input para análise de documentos longos</li>
+          <li>Como revisar e auditar saídas do modelo antes de usar</li>
+          <li>O que é alucinação e como eliminar risco real na prática</li>
+          <li>Como sistemas de IA nos tribunais lêem e classificam suas peças</li>
+        </ul>
+        <p class="prereq">Pré-requisito: nenhum</p>
+      </div>
+      <div class="path-card b">
+        <div class="coming-badge">disponível</div>
+        <div class="path-tag">// Trilha B — Construção</div>
+        <h3>Quero construir meu próprio sistema jurídico com IA — do zero ao deploy</h3>
+        <p>Para quem quer um pipeline real que o escritório ou a unidade controla, evolui e possui.</p>
+        <ul class="path-list">
+          <li>Pipeline RAG jurídico completo com Claude API</li>
+          <li>Base vetorial com precedentes e normas do seu nicho</li>
+          <li>Roteamento semântico: o sistema decide a estratégia</li>
+          <li>Cartão de Transparência: rastreabilidade de cada decisão</li>
+          <li>Output DOCX estruturado, pronto para revisão e assinatura</li>
+        </ul>
+        <p class="prereq">Pré-requisito: curiosidade técnica</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING PREVIEW -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Planos do curso</div>
+    <h2>Inscreva-se agora na Hotmart.</h2>
+    <p>O curso está aberto, com aulas já publicadas e novas aulas todas as semanas. Quem se inscreve no plano mensal entra imediatamente no Vantagens para quem se inscrever no curso com Pedro.</p>
+
+    <div class="pricing-preview">
+      <div class="price-card featured">
+        <div class="price-name">// PLANO MENSAL</div>
+        <div class="price-val"><sup>R$</sup>197</div>
+        <div class="price-period">por mês · cancele a qualquer momento</div>
+        <ul class="price-features">
+          <li><span class="ck">✓</span> Acesso às aulas já gravadas e disponíveis</li>
+          <li><span class="ck">✓</span> Novas aulas todas as semanas com exercícios</li>
+          <li><span class="ck">✓</span> Biblioteca de prompts atualizada</li>
+          <li><span class="ck">✓</span> Grupo Membros para dúvidas individuais</li>
+        </ul>
+        <a href="https://hotm.io/G7oKl41" target="_blank" rel="noopener noreferrer" class="price-cta" style="display:block;text-align:center;margin-top:18px;padding:13px 22px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;border-radius:7px;text-decoration:none;letter-spacing:.01em;">Inscreva-se na Hotmart →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">// PLANO ANUAL</div>
+        <div class="price-val" style="font-size:2.6rem;color:var(--muted);"><sup style="font-size:.55em;">∅</sup>Em breve</div>
+        <div class="price-period">valores e benefícios anunciados em breve</div>
+        <ul class="price-features" style="opacity:.55">
+          <li><span class="ck">✓</span> Tudo do plano mensal</li>
+          <li><span class="ck">✓</span> Tira-dúvidas ao vivo 1x por mês</li>
+          <li><span class="ck">✓</span> Certificado de conclusão A+B</li>
+          <li><span class="ck">✓</span> Histórico das aulas mantido</li>
+        </ul>
+        <div class="price-note">Lista de espera prioritária para quem está no Grupo Membros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Para quem é</div>
+    <h2>O único pré-requisito é querer entender — não apenas usar.</h2>
+
+    <div class="for-grid">
+      <div class="for-card yes">
+        <h4>// ESTE CURSO É PARA VOCÊ SE</h4>
+        <ul class="for-list">
+          <li><span class="ico">✓</span> Você nunca usou IA de forma estruturada e quer entender por onde começar com segurança</li>
+          <li><span class="ico">✓</span> Você usa ChatGPT na prática jurídica mas os resultados são inconsistentes e não confia totalmente</li>
+          <li><span class="ico">✓</span> Você quer entender como sistemas de IA nos tribunais processam as peças que chegam até eles</li>
+          <li><span class="ico">✓</span> Você quer construir um ativo proprietário — uma base de conhecimento que pertence à sua unidade</li>
+          <li><span class="ico">✓</span> Você prefere aprender o princípio a depender de uma ferramenta que pode mudar amanhã</li>
+        </ul>
+      </div>
+      <div class="for-card no">
+        <h4>// ESTE CURSO NÃO É PARA VOCÊ SE</h4>
+        <ul class="for-list">
+          <li><span class="ico">✗</span> Você quer uma solução pronta que funciona sem nenhum entendimento ou adaptação</li>
+          <li><span class="ico">✗</span> Você busca a promessa de que IA substituirá todo o trabalho jurídico automaticamente</li>
+          <li><span class="ico">✗</span> Você não tem disposição para aprender os conceitos por trás das ferramentas</li>
+          <li><span class="ico">✗</span> Você quer resultados sem revisão ou julgamento profissional da sua parte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<!-- FORM -->
+<section id="inscricao">
+  <div class="wrap">
+    <div class="section-label">Pré-inscrição</div>
+    <h2 style="text-align:center;margin-bottom:8px">Garanta vaga no Grupo Premium de pré-inscritos.</h2>
+    <p style="text-align:center;max-width:480px;margin:0 auto 36px">Acesso gratuito ao Grupo Premium de pré-inscritos, com vocabulário, dicas e materiais de nivelamento. O curso completo está aberto na Hotmart, e quem se inscreve no plano mensal ganha também acesso ao Vantagens para quem se inscrever no curso.</p>
+
+    <div class="form-wrap">
+      <div class="form-eyebrow">◈ PRÉ-INSCRIÇÃO · GRUPO PREMIUM</div>
+      <h3 class="form-title">Pré-inscrição para o Grupo Premium.</h3>
+      <p class="form-sub">Sem custo. Você entra no Grupo Premium de pré-inscritos, recebe o conteúdo de nivelamento e tem acesso aos materiais fundacionais. Para fazer o curso completo, a inscrição na Hotmart está aberta.</p>
+
+      <!-- Netlify Form: POST nativo, redireciona para /obrigado apos envio -->
+      <form action='/obrigado' id='lead-form' method='POST' name='pre-inscricao' data-netlify="true" netlify-honeypot="website">
+
+        <input type="hidden" name="form-name" value="pre-inscricao">
+
+        <!-- HONEYPOT -->
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="nome">NOME COMPLETO</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">WHATSAPP</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="email">E-MAIL</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com.br" required autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label for="perfil">SEU PERFIL</label>
+          <select id="perfil" name="perfil" required>
+            <option value="" disabled selected>Selecione...</option>
+            <option>Advogado(a) – escritório próprio</option>
+            <option>Advogado(a) – grande escritório</option>
+            <option>Advogado(a) – empresa / in-house</option>
+            <option>Promotor(a) / Procurador(a)</option>
+            <option>Defensor(a) Público(a)</option>
+            <option>Juiz(a) / Magistrado(a)</option>
+            <option>Servidor(a) do Judiciário</option>
+            <option>Estudante de Direito</option>
+            <option>Professor(a) de Direito</option>
+            <option>Outro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="uso-ia">COMO VOCÊ USA IA HOJE NA SUA PRÁTICA?</label>
+          <select id="uso-ia" name="uso_ia" required>
+            <option value="" disabled selected>Selecione...</option>
+            <option>Não uso ainda</option>
+            <option>Uso ChatGPT de forma básica</option>
+            <option>Já tenho um fluxo mais estruturado</option>
+            <option>Estou tentando construir algo mais sério</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="dor">O QUE MAIS TE TRAVA NO USO DE IA HOJE? (OPCIONAL)</label>
+          <textarea id="dor" name="dor" placeholder="Ex: não sei se posso confiar nos resultados, não sei por onde começar..."></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="whatsapp-consent" name="whatsapp_consent" value="sim" checked>
+          <label for="whatsapp-consent">Autorizo o contato via WhatsApp e quero ser incluído(a) no <strong>Grupo Premium de pré-inscritos</strong> para receber o conteúdo de nivelamento e materiais fundacionais.</label>
+        </div>
+
+        <button type="submit" class="form-submit" id="submit-btn">Fazer minha pré-inscrição →</button>
+      </form>
+
+
+      <p class="form-privacy">Seus dados são usados exclusivamente para acesso ao Grupo Premium de pré-inscritos e informações sobre o curso.<br>Sem spam. Cancelamento a qualquer momento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Dúvidas frequentes</div>
+    <h2>FAQ</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">O que recebo ao me pré-inscrever?</summary>
+        <div class="faq-a">
+          Acesso imediato ao <strong>Grupo Premium de pré-inscritos</strong>, com vocabulário de IA jurídica explicado em linguagem acessível, fundamentos sobre como LLMs processam texto jurídico e dicas práticas de uso seguro. O grupo roda em paralelo às aulas do curso e funciona como antessala ao conteúdo gravado na Hotmart.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Como funcionam as aulas do curso?</summary>
+        <div class="faq-a">
+          <strong>O curso está aberto, com aulas já gravadas e disponíveis na Hotmart.</strong> Quem se inscreve no plano mensal ganha acesso imediato a todas as aulas publicadas e recebe cada nova aula à medida que entra na plataforma. O ritmo é de novas aulas todas as semanas, intercalando Trilha A (entendimento) e Trilha B (pipeline completo).
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Qual a diferença entre o Grupo Premium de pré-inscritos e o Grupo Membros?</summary>
+        <div class="faq-a">
+          O <strong>Grupo Premium de pré-inscritos</strong> é gratuito e abre na pré-inscrição. Cobre vocabulário, nivelamento e fundamentos de IA jurídica. O <strong>Grupo Membros</strong> é exclusivo para quem se inscreve no curso na Hotmart, com canal direto para dúvidas individuais com Pedro sobre as aulas, exercícios e aplicação prática. Quem está no Grupo Premium tem prioridade e contexto antes de migrar para o Grupo Membros.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Nunca usei IA de forma estruturada. Este curso é para mim?</summary>
+        <div class="faq-a">
+          <strong>É exatamente para você.</strong> O curso começa do zero: o que a IA consegue fazer de verdade no contexto jurídico, como estruturar um input que produza resultado confiável e como revisar saídas antes de usá-las profissionalmente. O conteúdo do Grupo Premium prepara o terreno em paralelo, com vocabulário e fundamentos.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Preciso saber programar para acompanhar o curso?</summary>
+        <div class="faq-a">
+          <strong>Para a Trilha A: absolutamente não.</strong> As primeiras três aulas são 100% conceituais e práticas, sem código. Para a Trilha B, você vai lidar com Python simples, e cada aula ensina o passo com a explicação do porquê antes do como. O objetivo não é transformar o aluno em desenvolvedor, mas dar autonomia para construir e evoluir o próprio sistema.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Existe plano anual?</summary>
+        <div class="faq-a">
+          <strong>Em breve.</strong> O plano anual e seus benefícios adicionais (tira-dúvidas ao vivo mensal, certificado A+B, histórico estendido) serão anunciados em breve. Quem está no Grupo Premium de pré-inscritos tem lista de espera prioritária e é avisado primeiro quando a opção abrir.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">A pré-inscrição me compromete a pagar pelo curso?</summary>
+        <div class="faq-a">
+          <strong>Não.</strong> A pré-inscrição é gratuita e sem compromisso financeiro. Você entra no Grupo Premium, recebe o conteúdo de nivelamento e decide se quer fazer o curso completo na Hotmart no seu próprio tempo.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  Pedro Borges Mourão · IA Jurídica por Dentro · © 2026 — Todos os direitos reservados
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-text">
+    <strong>IA Jurídica por Dentro</strong>
+    Curso aberto · Aulas publicadas
+  </div>
+  <a href="https://hotm.io/G7oKl41" target="_blank" rel="noopener noreferrer" class="sticky-btn">Inscreva-se →</a>
+</div>
+
+<script>
+// (countdown removido — curso já aberto)
+
+// ── TERMINAL ──
+const termLines=[
+  {type:'cmd',text:'intake_pipeline contestacao_0034512.pdf'},
+  {type:'out',text:'[ tokenizando ] 47.842 tokens → mapa semântico',color:'#7090ff'},
+  {type:'out',text:'[ map-reduce ] comprimindo em chunks de 1.200 tokens...',color:'#6b7592'},
+  {type:'warn',text:'[ ATENÇÃO ] 73% do conteúdo descartado na fase de triagem'},
+  {type:'out',text:'[ roteamento ] classe da ação: saúde suplementar · cobertura negada',color:'#8090ff'},
+  {type:'info',text:'[ embedding ] similaridade com precedentes: 0.847'},
+  {type:'out',text:'[ output ] resumo entregue ao magistrado — 312 tokens',color:'#6b7592'},
+  {type:'cursor'}
+];
+const termEl=document.getElementById('terminal-output');
+let ti=0;
+function termNext(){
+  if(ti>=termLines.length)return;
+  const l=termLines[ti++];
+  const d=document.createElement('div');
+  d.className='terminal-line';
+  if(l.type==='cmd') d.innerHTML=`<span class="t-prompt">$</span><span class="t-cmd">&nbsp;${l.text}</span>`;
+  else if(l.type==='warn') d.innerHTML=`<span class="t-out t-warn">${l.text}</span>`;
+  else if(l.type==='info') d.innerHTML=`<span class="t-out t-info">${l.text}</span>`;
+  else if(l.type==='cursor') d.innerHTML=`<span class="t-out"><span class="t-cursor"></span></span>`;
+  else d.innerHTML=`<span class="t-out" style="color:${l.color||'#6b7592'}">${l.text}</span>`;
+  termEl.appendChild(d);
+  termEl.scrollTop=termEl.scrollHeight;
+  if(ti<termLines.length) setTimeout(termNext,ti===1?400:700);
+}
+new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){termNext();}
+},{threshold:.3}).observe(termEl);
+
+// ── STICKY ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('sticky-cta').style.display=window.scrollY>400?'flex':'none';
+});
+</script>
+</body>
+</html>

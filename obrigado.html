@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pré-inscrição confirmada · IA Jurídica por Dentro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0e14;--bg2:#111520;--bg3:#161b27;--border:#1e2535;
+  --accent:#ff5c1a;--accent2:#ff8c5a;--green:#00e5a0;
+  --text:#e8eaf0;--muted:#6b7592;
+  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;--body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+.card{
+  max-width:560px;background:var(--bg2);
+  border:1px solid var(--border);border-left:3px solid var(--green);
+  border-radius:14px;padding:48px 40px;position:relative;z-index:1;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.check{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(0,229,160,.1);border:2px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+}
+.check svg{width:32px;height:32px}
+
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;color:var(--green);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{
+  content:'';display:inline-block;width:7px;height:7px;
+  border-radius:50%;background:var(--green);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+h1{
+  font-family:var(--sans);font-weight:800;font-size:2.2rem;
+  letter-spacing:-.02em;line-height:1.1;color:var(--text);
+  margin-bottom:18px;
+}
+h1 em{font-style:normal;color:var(--accent)}
+
+.lead{
+  font-size:1.05rem;color:#c8ccd8;line-height:1.65;margin-bottom:22px;
+}
+
+.email-note{
+  background:rgba(255,92,26,.06);border:1px solid rgba(255,92,26,.22);
+  border-radius:8px;padding:16px 18px;margin-bottom:24px;
+}
+.email-note-label{
+  font-family:var(--mono);font-size:.7rem;color:var(--accent);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;
+}
+.email-note p{font-size:.93rem;color:#a0a8c0;line-height:1.55;margin:0}
+.email-note strong{color:var(--text);font-weight:600}
+
+.spam-tip{
+  font-family:var(--mono);font-size:.78rem;color:var(--muted);
+  line-height:1.55;margin-bottom:28px;
+}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  font-family:var(--sans);font-weight:700;font-size:.92rem;
+  padding:12px 22px;border-radius:7px;text-decoration:none;
+  letter-spacing:.01em;display:inline-flex;align-items:center;gap:6px;
+  transition:all .2s;
+}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  box-shadow:0 4px 18px rgba(255,92,26,.22);
+}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-secondary{
+  background:transparent;color:var(--text);border:1px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+.footer{
+  margin-top:36px;padding-top:20px;border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);
+  text-align:center;letter-spacing:.04em;
+}
+
+@media (max-width:560px){
+  .card{padding:36px 26px}
+  h1{font-size:1.7rem}
+  .lead{font-size:.98rem}
+  .actions{flex-direction:column}
+  .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="check">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 12l5 5L20 7" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="eyebrow">pré-inscrição confirmada</div>
+
+  <h1>Parabéns, você está <em>pré-inscrito.</em></h1>
+
+  <p class="lead">
+    Sua pré-inscrição no <strong>Grupo Premium de pré-inscritos</strong> foi registrada com sucesso.
+  </p>
+
+  <div class="email-note">
+    <div class="email-note-label">// próximo passo</div>
+    <p>
+      <strong>Verifique seu email</strong> para acessar o link de ingresso no grupo no WhatsApp. A mensagem chega em até alguns minutos no endereço que você cadastrou.
+    </p>
+  </div>
+
+  <p class="spam-tip">
+    Não recebeu? Confira a caixa de spam ou promoções. Em alguns provedores, o email do primeiro contato cai nessa pasta.
+  </p>
+
+  <div class="actions">
+    <a href="https://hotm.io/G7oKl41" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      Conhecer o curso completo →
+    </a>
+    <a href="/" class="btn btn-secondary">
+      ← voltar à página principal
+    </a>
+  </div>
+
+  <div class="footer">
+    Pedro Borges Mourão · IA Jurídica por Dentro · © 2026
+  </div>
+
+</div>
+
+</body>
+</html>

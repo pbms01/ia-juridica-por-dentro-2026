@@ -1,0 +1,9 @@
+{
+  "name": "ia-juridica-por-dentro-2026",
+  "version": "1.0.0",
+  "description": "Landpage IA Jurídica por Dentro com Netlify Function para envio de email via SMTP da Hostinger",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}
