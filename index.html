@@ -141,6 +141,18 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .coming-badge{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
 .coming-badge.live{background:rgba(34,197,94,.12);color:#22c55e;border-color:rgba(34,197,94,.35)}
 .coming-badge.recording{background:rgba(245,158,11,.12);color:#f59e0b;border-color:rgba(245,158,11,.35)}
+/* MANIFESTO — abertura conceitual logo após o hero */
+.manifesto{padding:96px 0 88px;position:relative;background:radial-gradient(ellipse at top,rgba(255,92,26,.04) 0%,transparent 60%)}
+.manifesto::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:48px;height:1px;background:var(--accent)}
+.manifesto-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;text-align:center;margin-bottom:44px;display:block}
+.manifesto-text{max-width:680px;margin:0 auto;font-size:1.15rem;line-height:1.72;color:var(--text)}
+.manifesto-text p{margin-bottom:24px}
+.manifesto-emph{color:var(--accent);font-weight:700;letter-spacing:.04em}
+.manifesto-quote{max-width:680px;margin:36px auto 0;padding:28px 32px;border-left:3px solid var(--accent);background:rgba(255,92,26,.05);font-family:var(--sans);font-weight:600;font-style:italic;font-size:1.42rem;line-height:1.45;color:var(--text);border-radius:0 8px 8px 0}
+.manifesto-quote-author{display:block;margin-top:18px;font-size:.72rem;font-family:var(--mono);font-style:normal;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:400}
+.manifesto-quote-author a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)}
+.manifesto-quote-author a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+@media (max-width:720px){.manifesto{padding:64px 0 56px}.manifesto-text{font-size:1.04rem}.manifesto-quote{font-size:1.16rem;padding:22px 24px}}
 
 /* TERMINAL */
 .terminal-wrap{background:#080b10;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:36px 0;box-shadow:0 20px 60px rgba(0,0,0,.5)}
@@ -306,6 +318,25 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
         <div class="stat-label">compartilhamentos</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="wrap">
+    <span class="manifesto-eyebrow">Antes de tudo</span>
+    <div class="manifesto-text">
+      <p>A angústia que a Inteligência Artificial criou em todos nós é real. Tudo está mudando em uma nova velocidade e isto exige de nós.</p>
+      <p>A adaptação não é fácil. Os caminhos fáceis seduzem. Os caminhos técnicos assustam.</p>
+      <p>O <span class="manifesto-emph">CAMINHO CERTO</span> é aquele que te conecta à IA a partir do que você já <span class="manifesto-emph">TEM</span>.</p>
+      <p>O operador jurídico tem uma vantagem que ele mesmo não conhece: <span class="manifesto-emph">A LINGUAGEM</span>.</p>
+      <p>Aprender Inteligência Artificial pela perspectiva linguística é muito mais natural para nós do que aprender embeddings, vetores ou cálculos matriciais. Um ato de fala é, para nós, o exercício da profissão. A linguagem é a ferramenta. Retórica, prosa, argumentação &mdash; tudo isso nos pertence.</p>
+      <p>Ao ver a IA como uma calculadora linguística, tudo faz mais sentido. Afinal, toda a ideia da IA é baseada em uma intuição da linguística de John Rupert Firth:</p>
+    </div>
+    <blockquote class="manifesto-quote">
+      &ldquo;We shall know a word by the company it keeps.&rdquo;
+      <span class="manifesto-quote-author"><a href="https://en.wikipedia.org/wiki/John_Rupert_Firth" target="_blank" rel="noopener noreferrer">&mdash; John Rupert Firth, 1957</a></span>
+    </blockquote>
   </div>
 </section>
 
