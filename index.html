@@ -139,6 +139,8 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .path-card.b .path-list li::before{color:var(--green)}
 .prereq{margin-top:14px;font-family:var(--mono);font-size:.66rem;color:var(--muted)}
 .coming-badge{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.coming-badge.live{background:rgba(34,197,94,.12);color:#22c55e;border-color:rgba(34,197,94,.35)}
+.coming-badge.recording{background:rgba(245,158,11,.12);color:#f59e0b;border-color:rgba(245,158,11,.35)}
 
 /* TERMINAL */
 .terminal-wrap{background:#080b10;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:36px 0;box-shadow:0 20px 60px rgba(0,0,0,.5)}
@@ -377,7 +379,7 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
 
     <div class="paths-grid">
       <div class="path-card a">
-        <div class="coming-badge">disponível</div>
+        <div class="coming-badge live">disponível</div>
         <div class="path-tag">// Trilha A — Entendimento</div>
         <h3>Quero entender o que é possível e dar meus primeiros passos com segurança</h3>
         <p>Para quem ainda não usa IA de forma sistemática ou usa sem confiança nos resultados.</p>
@@ -391,7 +393,7 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
         <p class="prereq">Pré-requisito: nenhum</p>
       </div>
       <div class="path-card b">
-        <div class="coming-badge">em gravação</div>
+        <div class="coming-badge recording">em gravação</div>
         <div class="path-tag">// Trilha B — Construção</div>
         <h3>Quero construir meu próprio sistema jurídico com IA — do zero ao deploy</h3>
         <p>Para quem quer um pipeline real que o escritório ou a unidade controla, evolui e possui.</p>
