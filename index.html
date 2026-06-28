@@ -75,25 +75,26 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--green);background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:4px;padding:6px 14px;margin-bottom:28px;letter-spacing:.06em}
 .hero-eyebrow::before{content:'◉';font-size:.65rem}
 .hero-sub{font-size:1.1rem;color:#8090b0;max-width:580px;margin-bottom:12px;line-height:1.65}
-.hero-launch{font-family:var(--mono);font-size:.82rem;color:var(--green);margin-bottom:32px;display:flex;align-items:center;gap:8px}
-.hero-launch::before{content:'→';color:var(--accent)}
-.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
-.pill{font-family:var(--mono);font-size:.7rem;padding:5px 12px;border-radius:4px;border:1px solid var(--border);color:var(--muted)}
-.pill.g{border-color:rgba(0,229,160,.25);color:var(--green);background:rgba(0,229,160,.06)}
-.pill.o{border-color:rgba(255,92,26,.25);color:var(--accent);background:rgba(255,92,26,.06)}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+
+/* DISPONIBILIDADE — de baixo para cima */
+.avail{margin:8px 0 40px}
+.avail-cap{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.avail-cap::before{content:'▸';color:var(--accent);font-size:.95rem}
+.module-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.module-name{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--text);letter-spacing:.01em}
+.module-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--green);background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.28);padding:3px 9px;border-radius:4px}
+.lessons{display:flex;flex-direction:column}
+.lesson{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--border)}
+.lesson:last-child{border-bottom:none}
+.lesson-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;flex-shrink:0;width:46px;padding-top:3px}
+.lesson-title{font-family:var(--body);font-size:.98rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.lesson-desc{font-family:var(--body);font-size:.84rem;line-height:1.5;color:var(--muted);margin:0}
 
 /* BUTTONS */
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(255,92,26,.22);letter-spacing:.01em}
 .btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,92,26,.32)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-family:var(--sans);font-weight:600;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:all .2s}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-
-/* STATS BAR */
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.stat-item{background:var(--bg2);padding:18px 14px;text-align:center}
-.stat-num{font-family:var(--mono);font-size:1.3rem;font-weight:700;color:var(--accent);display:block;letter-spacing:-.02em}
-.stat-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
 
 /* NOW CARD */
 .now-card{background:linear-gradient(135deg,#0d1a0d,#0b1410);border:1px solid rgba(0,229,160,.2);border-radius:16px;padding:32px;position:relative;overflow:hidden}
@@ -258,7 +259,7 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
 .fade-up{animation:fadeUp .6s ease both}
 
 @media(max-width:680px){
-  .stats-bar,.paths-grid,.for-grid,.proof-grid,.pricing-preview,.now-items{grid-template-columns:1fr}
+  .paths-grid,.for-grid,.proof-grid,.pricing-preview,.now-items{grid-template-columns:1fr}
   .form-wrap{padding:24px 18px}
   .sticky-cta{display:flex}
   body{padding-bottom:80px}
@@ -276,12 +277,6 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
   <span style="margin:0 8px;color:rgba(255,255,255,.45);font-size:.74rem;">ou</span>
   <a href="#inscricao" style="padding:5px 12px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:5px;font-weight:600;text-decoration:none;font-size:.74rem;letter-spacing:.02em;">experiência pré-inscritos (grátis) →</a>
 </div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">Pedro Borges Mourão · <strong>IA Jurídica por Dentro</strong></div>
-  <a href="#inscricao" class="nav-cta">Fazer minha pré-inscrição →</a>
-</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -305,38 +300,63 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
         <span class="manifesto-quote-author"><a href="https://en.wikipedia.org/wiki/John_Rupert_Firth" target="_blank" rel="noopener noreferrer">&mdash; John Rupert Firth, 1957</a></span>
       </blockquote>
     </div>
-    <p class="hero-sub fade-up">O curso está aberto, com aulas já publicadas.<br><strong>Inscreva-se agora e tenha acesso imediato a tudo que já está disponível, com novas aulas todas as semanas.</strong></p>
-    <p class="hero-launch fade-up">Aulas já gravadas e disponíveis. Novas aulas toda semana.</p>
-
-    <div class="hero-pills fade-up">
-      <span class="pill g">◉ Grupo premium ativo</span>
-      <span class="pill g">Vocabulário de IA jurídica</span>
-      <span class="pill g">Fundamentos e dicas práticas</span>
-      <span class="pill g">Aulas já gravadas e disponíveis</span>
-      <span class="pill">Vantagens para quem se inscrever no curso</span>
-    </div>
-
-    <div class="hero-ctas fade-up">
-      <a href="#inscricao" class="btn-primary">Fazer minha pré-inscrição →</a>
-      <a href="#curso" class="btn-ghost">Ver o que vem aí ↓</a>
-    </div>
-
-    <div class="stats-bar">
-      <div class="stat-item">
-        <span class="stat-num">41.9K</span>
-        <div class="stat-label">profissionais alcançados</div>
+    <p class="hero-sub fade-up">O curso está aberto, com aulas já publicadas.<br><strong>Inscreva-se agora e tenha acesso imediato a tudo que já está disponível.</strong></p>
+    <div class="avail fade-up">
+      <div class="avail-cap">O que já está disponível</div>
+      <div class="module-head">
+        <div class="module-name">Módulo Fundacional</div>
+        <div class="module-meta">14h30 · 24 seções de ~30 min</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-num">10,3%</span>
-        <div class="stat-label">taxa de engajamento</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">739</span>
-        <div class="stat-label">salvamentos em 2 semanas</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">1.041</span>
-        <div class="stat-label">compartilhamentos</div>
+      <div class="lessons">
+        <div class="lesson">
+          <span class="lesson-num">Aula 1</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Token e Custo</div>
+            <p class="lesson-desc">Compreensão do token como unidade de cobrança e processamento, e o impacto (imposto morfológico) do vocabulário jurídico em português.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 2</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Navegação Semântica</div>
+            <p class="lesson-desc">Entendimento da hipótese distribucional; como usar a escolha lexical e o &ldquo;cone distribucional&rdquo; para evitar respostas genéricas da IA.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 3</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Verbosidade</div>
+            <p class="lesson-desc">Uso de alavancas e restrições (constraints) para reduzir o tamanho de entradas e saídas, otimizando custo e qualidade.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 4</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Projects e Frames</div>
+            <p class="lesson-desc">Desenho das camadas de contexto; como orientar o modelo usando &ldquo;frames&rdquo; contextuais e verbos performativos na geração de peças.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 5</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Anatomia do PDF</div>
+            <p class="lesson-desc">Os gargalos de extração (PDF imagem vs. nativo) e por que o que você vê não é necessariamente o que o modelo lê, exigindo triagem do operador.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 6</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Revisão Adversarial</div>
+            <p class="lesson-desc">Aplicação do modelo de Toulmin para estruturar ataques à própria argumentação antes de submetê-la ao contraditório real.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 7</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Construção do Agente</div>
+            <p class="lesson-desc">Integração das habilidades anteriores no Claude Platform, criando um loop autônomo (think-act-observe) com system prompt construído.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -345,10 +365,10 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
 <!-- O QUE ACONTECE NA INSCRIÇÃO -->
 <section id="grupo">
   <div class="wrap">
-    <div class="section-label">O que você recebe ao se pré-inscrever</div>
+    <div class="section-label">O que você recebe ao se INSCREVER:</div>
     <div class="now-card">
-      <h2 class="now-title">Grupo Premium para pré-inscritos. Comece o nivelamento agora.</h2>
-      <p class="now-sub">Quem se pré-inscreve entra imediatamente no Grupo Premium de pré-inscritos, onde Pedro mantém o conteúdo de nivelamento, vocabulário e dicas técnicas. As aulas do curso estão na Hotmart, gravadas e disponíveis. Quem se inscreve no curso ganha também acesso ao Grupo Membros, com canal direto para dúvidas individuais.</p>
+      <h2 class="now-title">Grupo WHATSAPP MEMBROS para inscritos. Comece agora.</h2>
+      <p class="now-sub">Quem se inscreve entra imediatamente no Grupo MEMBROS, onde Pedro mantém vocabulário e dicas técnicas. As aulas do curso estão na Hotmart, gravadas e disponíveis. Quem se inscreve no curso ganha também acesso ao Grupo Premium com acesso à Curadoria agêntica Anti-Hype de notícias de IA.</p>
 
       <div class="now-items">
         <div class="now-item">
@@ -366,15 +386,10 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
           <div class="now-item-title">Dicas práticas imediatas</div>
           <div class="now-item-desc">Orientações de uso seguro que os alunos podem aplicar já: o que funciona, o que não funciona, o que expõe a risco sem que você perceba.</div>
         </div>
-        <div class="now-item">
-          <div class="now-item-icon">🎯</div>
-          <div class="now-item-title">Vantagens para quem se inscrever no curso</div>
-          <div class="now-item-desc">Quem está no Grupo Premium tem prioridade no acesso ao Grupo Membros após inscrição no curso, com canal direto para dúvidas individuais com Pedro.</div>
-        </div>
       </div>
 
       <div class="now-cta-wrap" style="margin-top:24px">
-        <a href="#inscricao" class="btn-primary">Fazer minha pré-inscrição →</a>
+        <a href="https://pbmsto01.hotmart.host/ia-juridica-por-dentro-assinatura-dcaafde5-ef9b-4b8b-affd-e56b7f97312e" target="_blank" rel="noopener noreferrer" class="btn-primary">Inscreva-se →</a>
       </div>
     </div>
   </div>
@@ -400,46 +415,6 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
     <p>A maioria dos profissionais não sabe que isso existe. Os poucos que sabem não entendem o mecanismo por dentro: qual argumento sobrevive ao map-reduce, o que a tokenização descarta, como o roteamento semântico classifica uma ação — e o que isso significa para cada peça protocolizada.</p>
     <br>
     <p>Quem aprender como esses sistemas funcionam agora vai ganhar <strong>10 anos de vantagem</strong> sobre quem ficar esperando o mercado "consolidar".</p>
-  </div>
-</section>
-
-<!-- CURSO: PREVIEW -->
-<section id="curso">
-  <div class="wrap">
-    <div class="section-label">O que vem aí — as aulas</div>
-    <h2>Um curso. Dois caminhos.</h2>
-    <p>Cada aluno chega com uma bagagem diferente. O curso cobre as duas jornadas dentro da mesma trilha progressiva — de quem está começando a quem quer construir um sistema próprio.</p>
-
-    <div class="paths-grid">
-      <div class="path-card a">
-        <div class="coming-badge live">disponível</div>
-        <div class="path-tag">// Trilha A — Entendimento</div>
-        <h3>Quero entender o que é possível e dar meus primeiros passos com segurança</h3>
-        <p>Para quem ainda não usa IA de forma sistemática ou usa sem confiança nos resultados.</p>
-        <ul class="path-list">
-          <li>Como a IA processa texto jurídico (e onde ela erra)</li>
-          <li>Engenharia de input para análise de documentos longos</li>
-          <li>Como revisar e auditar saídas do modelo antes de usar</li>
-          <li>O que é alucinação e como eliminar risco real na prática</li>
-          <li>Como sistemas de IA nos tribunais lêem e classificam suas peças</li>
-        </ul>
-        <p class="prereq">Pré-requisito: nenhum</p>
-      </div>
-      <div class="path-card b">
-        <div class="coming-badge recording">em gravação</div>
-        <div class="path-tag">// Trilha B — Construção</div>
-        <h3>Quero construir meu próprio sistema jurídico com IA — do zero ao deploy</h3>
-        <p>Para quem quer um pipeline real que o escritório ou a unidade controla, evolui e possui.</p>
-        <ul class="path-list">
-          <li>Pipeline RAG jurídico completo com Claude API</li>
-          <li>Base vetorial com precedentes e normas do seu nicho</li>
-          <li>Roteamento semântico: o sistema decide a estratégia</li>
-          <li>Cartão de Transparência: rastreabilidade de cada decisão</li>
-          <li>Output DOCX estruturado, pronto para revisão e assinatura</li>
-        </ul>
-        <p class="prereq">Pré-requisito: curiosidade técnica</p>
-      </div>
-    </div>
   </div>
 </section>
 
