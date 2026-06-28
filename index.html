@@ -75,7 +75,6 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--green);background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:4px;padding:6px 14px;margin-bottom:28px;letter-spacing:.06em}
 .hero-eyebrow::before{content:'◉';font-size:.65rem}
 .hero-sub{font-size:1.1rem;color:#8090b0;max-width:580px;margin-bottom:12px;line-height:1.65}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
 
 /* DISPONIBILIDADE — de baixo para cima */
 .avail{margin:8px 0 40px}
@@ -96,12 +95,6 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,92,26,.32)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-family:var(--sans);font-weight:600;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:all .2s}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-
-/* STATS BAR */
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.stat-item{background:var(--bg2);padding:18px 14px;text-align:center}
-.stat-num{font-family:var(--mono);font-size:1.3rem;font-weight:700;color:var(--accent);display:block;letter-spacing:-.02em}
-.stat-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
 
 /* NOW CARD */
 .now-card{background:linear-gradient(135deg,#0d1a0d,#0b1410);border:1px solid rgba(0,229,160,.2);border-radius:16px;padding:32px;position:relative;overflow:hidden}
@@ -266,7 +259,7 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
 .fade-up{animation:fadeUp .6s ease both}
 
 @media(max-width:680px){
-  .stats-bar,.paths-grid,.for-grid,.proof-grid,.pricing-preview,.now-items{grid-template-columns:1fr}
+  .paths-grid,.for-grid,.proof-grid,.pricing-preview,.now-items{grid-template-columns:1fr}
   .form-wrap{padding:24px 18px}
   .sticky-cta{display:flex}
   body{padding-bottom:80px}
@@ -370,30 +363,6 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
             <p class="lesson-desc">Integração das habilidades anteriores no Claude Platform, criando um loop autônomo (think-act-observe) com system prompt construído.</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="hero-ctas fade-up">
-      <a href="#inscricao" class="btn-primary">Fazer minha pré-inscrição →</a>
-      <a href="#curso" class="btn-ghost">Ver o que vem aí ↓</a>
-    </div>
-
-    <div class="stats-bar">
-      <div class="stat-item">
-        <span class="stat-num">41.9K</span>
-        <div class="stat-label">profissionais alcançados</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">10,3%</span>
-        <div class="stat-label">taxa de engajamento</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">739</span>
-        <div class="stat-label">salvamentos em 2 semanas</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">1.041</span>
-        <div class="stat-label">compartilhamentos</div>
       </div>
     </div>
   </div>
