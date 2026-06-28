@@ -75,13 +75,21 @@ nav{padding:20px 24px;display:flex;align-items:center;justify-content:space-betw
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;color:var(--green);background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:4px;padding:6px 14px;margin-bottom:28px;letter-spacing:.06em}
 .hero-eyebrow::before{content:'◉';font-size:.65rem}
 .hero-sub{font-size:1.1rem;color:#8090b0;max-width:580px;margin-bottom:12px;line-height:1.65}
-.hero-launch{font-family:var(--mono);font-size:.82rem;color:var(--green);margin-bottom:32px;display:flex;align-items:center;gap:8px}
-.hero-launch::before{content:'→';color:var(--accent)}
-.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
-.pill{font-family:var(--mono);font-size:.7rem;padding:5px 12px;border-radius:4px;border:1px solid var(--border);color:var(--muted)}
-.pill.g{border-color:rgba(0,229,160,.25);color:var(--green);background:rgba(0,229,160,.06)}
-.pill.o{border-color:rgba(255,92,26,.25);color:var(--accent);background:rgba(255,92,26,.06)}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+
+/* DISPONIBILIDADE — de baixo para cima */
+.avail{margin:8px 0 40px}
+.avail-cap{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.avail-cap::before{content:'▸';color:var(--accent);font-size:.95rem}
+.module-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.module-name{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--text);letter-spacing:.01em}
+.module-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--green);background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.28);padding:3px 9px;border-radius:4px}
+.lessons{display:flex;flex-direction:column}
+.lesson{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--border)}
+.lesson:last-child{border-bottom:none}
+.lesson-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;flex-shrink:0;width:46px;padding-top:3px}
+.lesson-title{font-family:var(--body);font-size:.98rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.lesson-desc{font-family:var(--body);font-size:.84rem;line-height:1.5;color:var(--muted);margin:0}
 
 /* BUTTONS */
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:.95rem;padding:16px 28px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(255,92,26,.22);letter-spacing:.01em}
@@ -306,14 +314,63 @@ footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border);fo
       </blockquote>
     </div>
     <p class="hero-sub fade-up">O curso está aberto, com aulas já publicadas.<br><strong>Inscreva-se agora e tenha acesso imediato a tudo que já está disponível, com novas aulas todas as semanas.</strong></p>
-    <p class="hero-launch fade-up">Aulas já gravadas e disponíveis. Novas aulas toda semana.</p>
-
-    <div class="hero-pills fade-up">
-      <span class="pill g">◉ Grupo premium ativo</span>
-      <span class="pill g">Vocabulário de IA jurídica</span>
-      <span class="pill g">Fundamentos e dicas práticas</span>
-      <span class="pill g">Aulas já gravadas e disponíveis</span>
-      <span class="pill">Vantagens para quem se inscrever no curso</span>
+    <div class="avail fade-up">
+      <div class="avail-cap">O que já está disponível</div>
+      <div class="module-head">
+        <div class="module-name">Módulo Fundacional</div>
+        <div class="module-meta">14h30 · 24 seções de ~30 min</div>
+      </div>
+      <div class="lessons">
+        <div class="lesson">
+          <span class="lesson-num">Aula 1</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Token e Custo</div>
+            <p class="lesson-desc">Compreensão do token como unidade de cobrança e processamento, e o impacto (imposto morfológico) do vocabulário jurídico em português.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 2</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Navegação Semântica</div>
+            <p class="lesson-desc">Entendimento da hipótese distribucional; como usar a escolha lexical e o &ldquo;cone distribucional&rdquo; para evitar respostas genéricas da IA.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 3</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Verbosidade</div>
+            <p class="lesson-desc">Uso de alavancas e restrições (constraints) para reduzir o tamanho de entradas e saídas, otimizando custo e qualidade.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 4</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Projects e Frames</div>
+            <p class="lesson-desc">Desenho das camadas de contexto; como orientar o modelo usando &ldquo;frames&rdquo; contextuais e verbos performativos na geração de peças.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 5</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Anatomia do PDF</div>
+            <p class="lesson-desc">Os gargalos de extração (PDF imagem vs. nativo) e por que o que você vê não é necessariamente o que o modelo lê, exigindo triagem do operador.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 6</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Revisão Adversarial</div>
+            <p class="lesson-desc">Aplicação do modelo de Toulmin para estruturar ataques à própria argumentação antes de submetê-la ao contraditório real.</p>
+          </div>
+        </div>
+        <div class="lesson">
+          <span class="lesson-num">Aula 7</span>
+          <div class="lesson-body">
+            <div class="lesson-title">Construção do Agente</div>
+            <p class="lesson-desc">Integração das habilidades anteriores no Claude Platform, criando um loop autônomo (think-act-observe) com system prompt construído.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-ctas fade-up">
